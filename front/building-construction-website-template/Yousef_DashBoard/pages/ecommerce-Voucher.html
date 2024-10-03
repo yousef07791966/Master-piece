@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="author" content="Codescandy" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8S4MT3EYG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-M8S4MT3EYG');
+    </script>
+    <style>
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Adjusting form elements for better design */
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .btn-custom {
+            background-color: #5a67d8;
+            color: white;
+        }
+
+        .btn-custom:hover {
+            background-color: #434190;
+        }
+
+        /* Responsiveness for smaller screens */
+        @media (max-width: 768px) {
+            .form-control {
+                width: 100%;
+            }
+
+            .btn-custom {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .table {
+                font-size: 14px;
+            }
+        }
+    </style>
+    <!-- Favicon icon-->
+    <link rel="shortcut icon" type="image/x-icon" href="https://dashui.codescandy.com/dashuipro/assets/images/favicon/favicon.ico" />
+
+    <!-- Libs CSS -->
+    <link href="../assets/libs/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="../assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" />
+    <link href="../assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="../assets/css/theme.min.css">
+    <link href="../assets/libs/dropzone/dist/dropzone.css" rel="stylesheet">
+    <link href="../assets/libs/%40yaireo/tagify/dist/tagify.css" rel="stylesheet">
+
+    <title>Manage Vouchers | Dash UI</title>
+</head>
+
+<body>
+    <main id="main-wrapper" class="main-wrapper">
+        <div class="header">
+              <!--Navbar nav -->
+              <ul class="navbar-nav navbar-right-wrap ms-lg-auto d-flex nav-top-wrap align-items-center ms-4 ms-lg-0">
+                  <li>
+                      <div class="dropdown">
+                          <button class="btn btn-ghost btn-icon rounded-circle" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+                              <i class="bi theme-icon-active"></i>
+                              <span class="visually-hidden bs-theme-text">Toggle theme</span>
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bs-theme-text">
+                              <li>
+                                  <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                      <i class="bi theme-icon bi-sun-fill"></i>
+                                      <span class="ms-2">Light</span>
+                                  </button>
+                              </li>
+                              <li>
+                                  <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                                      <i class="bi theme-icon bi-moon-stars-fill"></i>
+                                      <span class="ms-2">Dark</span>
+                                  </button>
+                              </li>
+                              <li>
+                                  <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+                                      <i class="bi theme-icon bi-circle-half"></i>
+                                      <span class="ms-2">Auto</span>
+                                  </button>
+                              </li>
+                          </ul>
+                      </div>
+                  </li>
+                  <li class="dropdown stopevent ms-2">
+                      
+                      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end" aria-labelledby="dropdownNotification">
+                          <div>
+                              <div class="border-bottom px-3 pt-2 pb-3 d-flex justify-content-between align-items-center">
+                                  <p class="mb-0 text-dark fw-medium fs-4">Notifications</p>
+                                  <a href="#!" class="text-muted">
+                                      <span>
+                                          <i class="me-1 icon-xs" data-feather="settings"></i>
+                                      </span>
+                                  </a>
+                              </div>
+                              <div data-simplebar style="height: 250px">
+                                  <!-- List group -->
+                                  <ul class="list-group list-group-flush notification-list-scroll">
+                                      <!-- List group item -->
+                                      <li class="list-group-item bg-light">
+                                          <a href="#!" class="text-muted">
+                                              <h5 class="mb-1">Rishi Chopra</h5>
+                                              <p class="mb-0">Mauris blandit erat id nunc blandit, ac eleifend dolor pretium.</p>
+                                          </a>
+                                      </li>
+                                      <!-- List group item -->
+                                      <li class="list-group-item">
+                                          <a href="#!" class="text-muted">
+                                              <h5 class="mb-1">Neha Kannned</h5>
+                                              <p class="mb-0">Proin at elit vel est condimentum elementum id in ante. Maecenas et sapien metus.</p>
+                                          </a>
+                                      </li>
+                                      <!-- List group item -->
+                                      <li class="list-group-item">
+                                          <a href="#!" class="text-muted">
+                                              <h5 class="mb-1">Nirmala Chauhan</h5>
+                                              <p class="mb-0">Morbi maximus urna lobortis elit sollicitudin sollicitudieget elit vel pretium.</p>
+                                          </a>
+                                      </li>
+                                      <!-- List group item -->
+                                      <li class="list-group-item">
+                                          <a href="#!" class="text-muted">
+                                              <h5 class="mb-1">Sina Ray</h5>
+                                              <p class="mb-0">Sed aliquam augue sit amet mauris volutpat hendrerit sed nunc eu diam.</p>
+                                          </a>
+                                      </li>
+                                  </ul>
+                              </div>
+                              <div class="border-top px-3 py-2 text-center">
+                                  <a href="#!" class="text-inherit">View all Notifications</a>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+                  <!-- List -->
+                  <li class="dropdown ms-2">
+                      <a class="rounded-circle" href="#!" role="button" id="dropdownUser" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <div class="avatar avatar-md avatar-indicators avatar-online">
+                              <img id="img" alt="avatar" src="../assets/images/avatar/avatar-11.jpg" class="rounded-circle" />
+                          </div>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
+                          <div class="px-4 pb-0 pt-2">
+                              <div class="lh-1">
+                                  <h5 class="mb-1">John E. Grainger</h5>
+                                  <a href="#!" class="text-inherit fs-6">View my profile</a>
+                              </div>
+                              <div class="dropdown-divider mt-3 mb-2"></div>
+                          </div>
+  
+                          <ul class="list-unstyled">
+                              <li>
+                                  <a class="dropdown-item d-flex align-items-center" href="#!">
+                                      <i class="me-2 icon-xxs dropdown-item-icon" data-feather="user"></i>
+                                      Edit Profile
+                                  </a>
+                              </li>
+                              <li>
+                                  <a class="dropdown-item" href="#!">
+                                      <i class="me-2 icon-xxs dropdown-item-icon" data-feather="activity"></i>
+                                      Activity Log
+                                  </a>
+                              </li>
+  
+                              <li>
+                                  <a class="dropdown-item d-flex align-items-center" href="#!">
+                                      <i class="me-2 icon-xxs dropdown-item-icon" data-feather="settings"></i>
+                                      Settings
+                                  </a>
+                              </li>
+                              <li>
+                                  <a class="dropdown-item" href="https://dashui.codescandy.com/dashuipro/index.html">
+                                      <i class="me-2 icon-xxs dropdown-item-icon" data-feather="power"></i>
+                                      Sign Out
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+         <!-- navbar vertical  -->
+         <!-- Sidebar -->
+  <div class="navbar-vertical navbar nav-dashboard">
+      <div class="h-100" data-simplebar>
+          <!-- Brand logo -->
+          <a class="navbar-brand" href="https://dashui.codescandy.com/dashuipro/index.html">
+              <img src="https://dashui.codescandy.com/dashuipro/assets/images/brand/logo/logo-2.svg" alt="dash ui - bootstrap 5 admin dashboard template" />
+          </a>
+          <!-- Navbar nav -->
+          <ul class="navbar-nav flex-column" id="sideNavbar">
+              <!-- Nav item -->
+              <li class="nav-item">
+                  <div class="navbar-heading">Apps</div>
+              </li>
+              <!-- Nav item -->
+              <li class="nav-item">
+                  <a class="nav-link has-arrow " href="chat-app.html">
+                      <i data-feather="message-square" class="nav-icon me-2 icon-xxs"></i>
+                      Chat
+                  </a>
+              </li>
+              <!-- Nav item -->
+              <li class="nav-item">
+                  <a
+                      class="nav-link has-arrow  collapsed "
+                      href="#!"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navecommerce"
+                      aria-expanded="false"
+                      aria-controls="navecommerce"
+                  >
+                      <i data-feather="shopping-cart" class="nav-icon me-2 icon-xxs"></i>
+                      Ecommerce
+                  </a>
+  
+                  <div id="navecommerce" class="collapse " data-bs-parent="#sideNavbar">
+                      <ul class="nav flex-column">
+                          <li class="nav-item">
+                              <a class="nav-link has-arrow " href="ecommerce-product-edit.html">Product</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link has-arrow " href="ecommerce-category-edit.html">Category</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link has-arrow " href="ecommerce-Voucher.html">Voucher</a>
+                        </li>
+                          <li class="nav-item">
+                              <a class="nav-link has-arrow " href="ecommerce-customer.html">Customer</a>
+                          </li>
+                      </ul>
+                  </div>
+              </li>
+              <!-- Nav item -->
+              <li class="nav-item">
+                  <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse" data-bs-target="#navEmail" aria-expanded="false" aria-controls="navEmail">
+                      <i data-feather="mail" class="nav-icon me-2 icon-xxs"></i>
+                      Contact
+                  </a>
+  
+                  <div id="navEmail" class="collapse " data-bs-parent="#sideNavbar">
+                      <ul class="nav flex-column">
+                          <li class="nav-item">
+                              <a class="nav-link has-arrow " href="mail.html">Inbox</a>
+                          </li>
+                          <li class="nav-item">
+							<a class="nav-link has-arrow " href="ecommerce-comment-edit.html">Comments</a>
+						</li>
+                      </ul>
+                  </div>
+              </li>
+
+      </div>
+  </div>
+  
+        <!-- Page Content -->
+        <div id="app-content">
+            <!-- Container fluid -->
+            <div class="app-content-area">
+                <!-- Voucher List Section -->
+  
+                    <h2>Voucher</h2>
+        
+                        <!-- <button class="btn btn-info ms-2"  onclick="sendalluser()" >Send  Voucher To All User</button>  -->
+                        
+                        <button class="btn btn-info ms-2" onclick="showModal()">Send Voucher To All Users</button>
+                   
+                       <button class="btn btn-warning ms-2"  onclick="showModal1()" >Send  Voucher To One User</button>
+                       <button class="btn btn-info ms-2" class="btn btn-custom" onclick="showModal2()">+ Add Voucher</button>
+                    </div>
+                    <table class="table table-striped mt-3">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Code</th>
+                                <th>Discount</th>
+                                <th>Created At</th>
+                                <th>Expiry Date</th>
+                                <th>Used</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="GetVoucher">
+                            <!-- Voucher data will be loaded here -->
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Add Voucher Form Section -->
+                <div class="modal fade" id="addVoucherModal" tabindex="-1" aria-labelledby="addVoucherModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addVoucherModalLabel">Add Voucher</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Form Section inside modal -->
+                                <form id="AddVoucher">
+                                    <div class="mb-3">
+                                        <label for="productPrice" class="form-label">Voucher Code</label>
+                                        <input type="text" class="form-control" id="productPrice" name="Code" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="productDescription" class="form-label">Discount</label>
+                                        <input type="number" class="form-control" id="productDescription" name="DiscountAmount" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="productDiscount" class="form-label">Expiry Date</label>
+                                        <input type="date" class="form-control" id="productDiscount" name="ExpiryDate" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-custom" onclick="addVoucher()">Add Voucher</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Edit Voucher Form Section -->
+                <div class="modal fade" id="editVoucherModal" tabindex="-1" aria-labelledby="editVoucherModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editVoucherModalLabel">Edit Voucher</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="EditVoucherFormtttt">
+                                    <div class="mb-3">
+                                        <label for="productPrice" class="form-label">Voucher Code</label>
+                                        <input type="text" class="form-control" id="productPrice" name="Code" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="productDescription" class="form-label">Discount</label>
+                                        <input type="number" class="form-control" id="productDescription" name="DiscountAmount" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="productDiscount" class="form-label">Expiry Date</label>
+                                        <input type="date" class="form-control" id="productDiscount" name="ExpiryDate" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-custom" onclick="EditVoucher()">Edit Voucher</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal fade" id="sendEmailModal" tabindex="-1" aria-labelledby="sendEmailModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="sendEmailModalLabel">Send Email to All Users</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Form Section inside modal -->
+                    <form id="sendEmailForm" onsubmit="sendemail()">
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="subject" name="subject" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="body" class="form-label">Body</label>
+                            <textarea class="form-control" id="body" name="body" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-custom">Send Emails</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- هاد لجزء البريد ليوزر معين -->
+
+    <div class="modal fade" id="sendVoucherModal" tabindex="-1" aria-labelledby="sendVoucherModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="sendVoucherModalLabel">Send Voucher to One User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Form Section inside modal -->
+                    <form id="sendVoucherForm" onsubmit="sendemail1()">
+                        <div class="mb-3">
+                            <label for="userEmail" class="form-label">User Email</label>
+                            <input type="email" class="form-control" id="userEmail" name="userEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="voucherCode" class="form-label">Voucher Code</label>
+                            <input type="text" class="form-control" id="voucherCode" name="voucherCode" required>
+                        </div>
+                        <button type="submit" class="btn btn-custom">Send Voucher</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        async function vouchertGet() {
+            const url = "https://localhost:44350/api/Voucher/GetVoucher";
+            let response = await fetch(url);
+            let data = await response.json();
+            let productTable = document.getElementById('GetVoucher');
+            data.forEach(element => {
+                productTable.innerHTML += `
+                <tr>
+                    <td>${element.id}</td>
+                    <td>${element.code}</td>
+                    <td>${element.discountAmount}</td>
+                    <td>${element.createdAt}</td>
+                    <td>${element.expiryDate}</td>
+                    <td>${element.isUsed}</td>
+                    <td>
+                         <button class="btn btn-sm btn-primary" onclick="StoreIDVoucher(${element.id})"">Edit Voucher</button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteVoucher(${element.id})">Delete</button>
+                    </td>
+                </tr>
+                `;
+            });
+        }
+        vouchertGet();
+
+        async function deleteVoucher(id) {
+            const urlDelete = `https://localhost:44350/api/Voucher/${id}`;
+            await fetch(urlDelete, { method: "DELETE" });
+            alert("Voucher deleted successfully");
+        }
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+                section.style.display = 'none';
+            });
+            const activeSection = document.getElementById(sectionId);
+            activeSection.classList.add('active');
+            activeSection.style.display = 'block';
+        }
+
+        async function addVoucher() {
+            event.preventDefault();
+            const url = "https://localhost:44350/api/Voucher/AddVoucheraa";
+            var form = document.getElementById("AddVoucher");
+            var formData = new FormData(form);
+            let response = await fetch(url, {
+                method: "POST",
+                body: formData,
+            });
+
+            if (response.ok) {
+                alert("Voucher added successfully");
+                // Close the modal after adding the voucher
+                var myModalEl = document.getElementById('addVoucherModal');
+                var modal = bootstrap.Modal.getInstance(myModalEl);
+                modal.hide();
+            } else {
+                alert("Failed to add voucher");
+            }
+        }
+        function StoreIDVoucher(X) {
+    // تحقق من تخزين VoucherId
+    console.log("Storing Voucher ID:", X);
+    
+    // تخزين الـ VoucherId في localStorage
+    localStorage.setItem('voucherId', X);
+
+    // عرض المودال
+    var myModal = new bootstrap.Modal(document.getElementById('editVoucherModal'), {
+        keyboard: false
+    });
+    myModal.show();
+}
+
+// دالة لتعديل الفاتورة باستخدام Fetch API
+async function EditVoucher() {
+    event.preventDefault();  // منع السلوك الافتراضي للنموذج
+debugger
+    const voucherId = localStorage.getItem('voucherId');
+    console.log("Voucher ID being edited:", voucherId);  // تحقق من وجود VoucherId
+
+    const url = `https://localhost:44350/api/Voucher/UpdateVoucher/${voucherId}`;
+    var form = document.getElementById("EditVoucherFormtttt");
+    var formData = new FormData(form);
+
+    console.log("Sending data to API:", formData);  // تحقق من البيانات المرسلة
+
+    let response = await fetch(url, {
+        method: "PUT",
+        body: formData,
+    });
+
+    if (response.ok) {
+        alert("Voucher updated successfully");
+        var myModalEl = document.getElementById('editVoucherModal');
+        var modal = bootstrap.Modal.getInstance(myModalEl);
+        modal.hide();
+    } else {
+        console.error("Failed to update voucher", response.statusText);  // تسجيل الخطأ
+        alert("Failed to update voucher");
+    }
+}
+
+
+//   function sendalluser(){
+// window.location.href="Emailfor All User.html";
+
+//       }
+//       function sendoneuser(){
+// window.location.href="sendoneUser.html";
+
+//       }
+
+
+        function showModal() {
+            var myModal = new bootstrap.Modal(document.getElementById('sendEmailModal'), {
+                keyboard: false
+            });
+            myModal.show();
+        }
+        function showModal1() {
+            var myModal = new bootstrap.Modal(document.getElementById('sendVoucherModal'), {
+                keyboard: false
+            });
+            myModal.show();
+        }
+        function showModal2() {
+            var myModal = new bootstrap.Modal(document.getElementById('addVoucherModal'), {
+                keyboard: false
+            });
+            myModal.show();
+        }
+        // ارسال لكل اليوزر
+        async function sendemail() {
+            debugger;
+            const url = "https://localhost:44350/api/Voucher/SendEmailALLUserRememberMe";
+            var form = document.getElementById("sendEmailForm");
+            event.preventDefault();
+            var formData = new FormData(form);
+            let response = await fetch(url, {
+                method: "POST",
+                body: formData,
+            });
+            var data = response;
+            alert("Emails sent successfully");
+        }
+      
+// ارسال ليوزر معين بواسطة الكود يليي  بقاعدة البيانات
+        async function sendemail1() {
+            debugger;
+            event.preventDefault();
+            var userEmail = document.getElementById("userEmail").value;
+            var voucherCode = document.getElementById("voucherCode").value;
+            const url = `https://localhost:44350/api/Voucher/send-voucher/${userEmail}?voucherCode=${voucherCode}`;
+            var form = document.getElementById("sendVoucherForm");
+		
+            let response = await fetch(url, {
+                method: "POST"
+            });
+
+            if (response.ok) {
+                alert("Voucher sent successfully");
+            } else {
+                alert("Failed to send voucher");
+            }
+        }
+    </script>
+
+    <!-- Additional Scripts -->
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/libs/simplebar/dist/simplebar.min.js"></script>
+</body>
+
+</html>

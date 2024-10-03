@@ -1,0 +1,305 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-M8S4MT3EYG"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-M8S4MT3EYG");
+    </script>
+    <style>
+      .section {
+        display: none;
+      }
+
+      .section.active {
+        display: block;
+      }
+    </style>
+    <!-- Favicon icon-->
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://dashui.codescandy.com/dashuipro/assets/images/favicon/favicon.ico"
+    />
+
+    <!-- Color modes -->
+    <script src="../assets/js/vendors/color-modes.js"></script>
+
+    <!-- Libs CSS -->
+    <link
+      href="../assets/libs/bootstrap-icons/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../assets/libs/%40mdi/font/css/materialdesignicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../assets/libs/simplebar/dist/simplebar.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="../assets/css/theme.min.css" />
+
+    <link href="../assets/libs/dropzone/dist/dropzone.css" rel="stylesheet" />
+    <link
+      href="../assets/libs/%40yaireo/tagify/dist/tagify.css"
+      rel="stylesheet"
+    />
+
+    <title>Admin Chat Interface</title>
+    <!-- Include your CSS and JS libraries here -->
+
+    <style>
+      .user-message {
+        background-color: #f1f1f1;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 10px;
+        text-align: left;
+      }
+
+      .admin-message {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 10px;
+        text-align: right;
+      }
+
+      .chat-box {
+        width: 1100px;
+        height: 500px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .chat-header {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        border-radius: 10px 10px 0 0;
+        text-align: center;
+      }
+
+      .chat-body {
+        padding: 10px;
+        overflow-y: auto;
+        flex: 1;
+        background-color: #f5f5f5;
+      }
+
+      .chat-footer {
+        padding: 10px;
+        background-color: white;
+        border-top: 1px solid #ccc;
+        display: flex;
+      }
+
+      #admin-chat-input {
+        flex: 1;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      #admin-send-btn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        margin-left: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <main id="main-wrapper" class="main-wrapper"> -->
+<!-- Sidebar -->
+<div class="navbar-vertical navbar nav-dashboard">
+    <div class="h-100" data-simplebar>
+        <!-- Brand logo -->
+        <a class="navbar-brand" href="https://dashui.codescandy.com/dashuipro/index.html">
+            <img src="https://dashui.codescandy.com/dashuipro/assets/images/brand/logo/logo-2.svg" alt="dash ui - bootstrap 5 admin dashboard template" />
+        </a>
+        <!-- Navbar nav -->
+        <ul class="navbar-nav flex-column" id="sideNavbar">
+            <!-- Nav item -->
+            <li class="nav-item">
+                <div class="navbar-heading">Apps</div>
+            </li>
+            <!-- Nav item -->
+            <li class="nav-item">
+                <a class="nav-link has-arrow " href="chat-app.html">
+                    <i data-feather="message-square" class="nav-icon me-2 icon-xxs"></i>
+                    Chat
+                </a>
+            </li>
+            <!-- Nav item -->
+            <li class="nav-item">
+                <a
+                    class="nav-link has-arrow  collapsed "
+                    href="#!"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navecommerce"
+                    aria-expanded="false"
+                    aria-controls="navecommerce"
+                >
+                    <i data-feather="shopping-cart" class="nav-icon me-2 icon-xxs"></i>
+                    Ecommerce
+                </a>
+
+                <div id="navecommerce" class="collapse " data-bs-parent="#sideNavbar">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow " href="ecommerce-product-edit.html">Product</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow " href="ecommerce-category-edit.html">Category</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow " href="ecommerce-Voucher.html">Voucher</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow " href="ecommerce-customer.html">Customer</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <!-- Nav item -->
+            <li class="nav-item">
+                <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse" data-bs-target="#navEmail" aria-expanded="false" aria-controls="navEmail">
+                    <i data-feather="mail" class="nav-icon me-2 icon-xxs"></i>
+                    Contact
+                </a>
+
+                <div id="navEmail" class="collapse " data-bs-parent="#sideNavbar">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow " href="mail.html">Inbox</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow " href="ecommerce-comment-edit.html">Comments</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+           
+    </div>
+</div>
+
+<!---->
+<!-- نافذة الدردشة الخاصة بالمسؤول -->
+<div style="margin-left: 300px; margin-top: 200px;">
+<div class="chat-box">
+<div class="chat-header">
+    <h4>Admin Chat</h4>
+</div>
+<div class="chat-body" id="chat-body">
+    <!-- الرسائل سيتم تحميلها هنا -->
+</div>
+<div class="chat-footer">
+    <input type="text" id="admin-chat-input" placeholder="Type a message..." />
+    <button id="admin-send-btn">Send</button>
+</div>
+</div>
+</div>
+    <!-- </main> -->
+    <script>
+      document
+        .getElementById("admin-send-btn")
+        .addEventListener("click", async function () {
+          const messageContent =
+            document.getElementById("admin-chat-input").value;
+
+          if (!messageContent) return; // التأكد من أن الرسالة ليست فارغة
+
+          try {
+            const response = await fetch(
+              `https://localhost:44367/api/Chat/replayMessage/${userId}`,
+              {
+                method: "POST",
+                body: new URLSearchParams({
+                  Cmessages: messageContent,
+                  Flag: 1,
+                }),
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                },
+              }
+            );
+
+            if (!response.ok) throw new Error("Failed to send message");
+
+            document.getElementById("admin-chat-input").value = ""; // تفريغ حقل الإدخال بعد الإرسال
+            loadMessagesForAdmin(userId); // إعادة تحميل الرسائل بعد الرد
+          } catch (error) {
+            console.error("Error sending message:", error);
+          }
+        });
+      ///////////////////////////////
+      // تحميل الرسائل من الـ API وعرضها في واجهة المسؤول
+      async function loadMessagesForAdmin(userId) {
+  try {
+    const response = await fetch(
+      `https://localhost:44367/api/Chat/showMessage/${userId}`
+    );
+    if (!response.ok) throw new Error("Failed to load messages");
+
+    const messages = await response.json();
+    const chatBody = document.getElementById("chat-body");
+    chatBody.innerHTML = ""; // Clear current messages
+
+    messages.forEach(function(message) {
+      var msgElement = document.createElement("div");
+      msgElement.textContent = message.cmessages;
+      msgElement.className = "message"; // Add general message class
+
+      // Check flag value to determine the sender
+      if (message.flag === 1) {
+        msgElement.className += " admin-message"; // Admin message (right side)
+      } else {
+        msgElement.className += " user-message"; // User message (left side)
+      }
+
+      chatBody.appendChild(msgElement);
+    });
+  } catch (error) {
+    console.error("Error loading messages:", error);
+  }
+}
+
+
+      const userId = localStorage.getItem("UserId"); // تحديد userId المستخدم الذي يتم الرد عليه
+      loadMessagesForAdmin(userId); // تحميل الرسائل عند فتح الصفحة
+    </script>
+
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/libs/feather-icons/dist/feather.min.js"></script>
+    <script src="../assets/libs/simplebar/dist/simplebar.min.js"></script>
+
+    <!-- Theme JS -->
+    <script src="../assets/js/theme.min.js"></script>
+  </body>
+</html>

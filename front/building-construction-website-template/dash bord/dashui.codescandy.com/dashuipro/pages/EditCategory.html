@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Category</title>
+    <!-- Favicon icon-->
+    <link rel="shortcut icon" type="image/x-icon" href="https://dashui.codescandy.com/dashuipro/assets/images/favicon/favicon.ico" />
+
+    <!-- Libs CSS -->
+    <link href="../assets/libs/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="../assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" />
+    <link href="../assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="../assets/css/theme.min.css">
+    <link href="../assets/libs/dropzone/dist/dropzone.css" rel="stylesheet">
+    <link href="../assets/libs/%40yaireo/tagify/dist/tagify.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            background: linear-gradient(to right, #e3dfe7, #f6f6f6);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+        }
+
+        .container {
+            margin-top: 80px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: row;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            background-color: #ffffff;
+            color: #333;
+            overflow: hidden;
+        }
+
+        .card-title {
+            color: #007bff;
+            font-weight: 600;
+        }
+
+        .form-control, .formCategoryName-control {
+            border-radius: 10px;
+            border: 2px solid #ced4da;
+            font-size: 16px;
+            padding: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .form-control:focus, .formCategoryName-control:focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.7);
+        }
+
+        .btn-primary {
+            background-color: #2575fc;
+            border-color: #2575fc;
+            padding: 12px 25px;
+            font-size: 18px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #1b5fd6;
+            border-color: #1b5fd6;
+        }
+
+        label {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        h4 {
+            margin-bottom: 30px;
+            font-size: 26px;
+        }
+
+        .card-body {
+            padding: 40px;
+            flex: 1;
+        }
+
+        .form-control[type="file"] {
+            padding: 5px;
+        }
+
+        .form-image-container {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .image-container {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-container {
+            width: 50%;
+            padding: 40px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <main id="main-wrapper" class="main-wrapper">
+        <div class="header">
+              <!--Navbar nav -->
+              <ul class="navbar-nav navbar-right-wrap ms-lg-auto d-flex nav-top-wrap align-items-center ms-4 ms-lg-0">
+                  <li>
+                      <div class="dropdown">
+                          <button class="btn btn-ghost btn-icon rounded-circle" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+                              <i class="bi theme-icon-active"></i>
+                              <span class="visually-hidden bs-theme-text">Toggle theme</span>
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bs-theme-text">
+                              <li>
+                                  <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                      <i class="bi theme-icon bi-sun-fill"></i>
+                                      <span class="ms-2">Light</span>
+                                  </button>
+                              </li>
+                              <li>
+                                  <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                                      <i class="bi theme-icon bi-moon-stars-fill"></i>
+                                      <span class="ms-2">Dark</span>
+                                  </button>
+                              </li>
+                              <li>
+                                  <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+                                      <i class="bi theme-icon bi-circle-half"></i>
+                                      <span class="ms-2">Auto</span>
+                                  </button>
+                              </li>
+                          </ul>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- Sidebar -->
+
+      <!-- Form Section -->
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-md-10">
+                  <div class="card form-image-container">
+                      <!-- قسم الصورة -->
+                      <div class="image-container">
+                          <img src="/dash bord/backblue.gif" alt="Category Image">
+                      </div>
+
+                      <!-- قسم الفورم -->
+                      <div class="form-container">
+                          <h4 class="card-title text-center">Edit Category</h4>
+
+                          <form id="form" onsubmit="EditCategory(event)">
+                              <div class="form-group">
+                                  <label for="CategoryImage">Category Image</label>
+                                  <input type="file" class="form-control" id="CategoryImage" name="Image">
+                              </div>
+
+                              <div class="form-group">
+                                  <label for="CategoryName">Category Name</label>
+                                  <input type="text" class="formCategoryName-control form-control" id="CategoryName" name="Name" placeholder="Enter category name">
+                              </div>
+
+                              <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <script>
+          var n = Number(localStorage.getItem("categoryId"));
+          const url = `https://localhost:44367/api/AdminControllers/Category?id=${n}`;
+          var form = document.getElementById("form");
+
+          async function EditCategory(event) {
+              event.preventDefault();
+              var formData = new FormData(form);
+
+              try {
+                  let response = await fetch(url, {
+                      method: "PUT",
+                      body: formData,
+                  });
+
+                  if (response.ok) {
+                      alert("Category edited successfully");
+                      window.location.href = "ecommerce-Category-edit.html";
+                  } else {
+                      alert("Failed to edit the category. Please try again.");
+                  }
+              } catch (error) {
+                  alert("An error occurred while editing the category. Please try again.");
+              }
+          }
+      </script>
+      <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  </main>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Vouchers</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Voucher Management</h2>
+        <div class="d-flex justify-content-between mb-3">
+            <button class="btn btn-primary" onclick="openAddVoucherModal()">Add Voucher</button>
+        </div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Code</th>
+                    <th>Discount</th>
+                    <th>Expiry Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="voucherTableBody">
+                <!-- Voucher rows will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal for adding/editing voucher -->
+    <div class="modal fade" id="voucherModal" tabindex="-1" aria-labelledby="voucherModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="voucherModalLabel">Add/Edit Voucher</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="voucherForm">
+                        <input type="hidden" id="voucherId">
+                        <div class="mb-3">
+                            <label for="voucherCode" class="form-label">Code</label>
+                            <input type="text" class="form-control" id="voucherCode" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="discountAmount" class="form-label">Discount Amount</label>
+                            <input type="number" class="form-control" id="discountAmount" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="expiryDate" class="form-label">Expiry Date</label>
+                            <input type="date" class="form-control" id="expiryDate" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="saveVoucher()">Save Voucher</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        let vouchers = [];
+
+        // Load vouchers and display in the table
+        function loadVouchers() {
+            // Fetch vouchers from the API (mocked data for now)
+            // In real scenario, you would use: fetch('/api/vouchers') or similar
+            vouchers = [
+                { id: 1, code: 'DISCOUNT10', discountAmount: 10, expiryDate: '2024-12-31' },
+                { id: 2, code: 'SUMMER20', discountAmount: 20, expiryDate: '2024-08-31' },
+            ];
+            displayVouchers();
+        }
+
+        function displayVouchers() {
+            const tableBody = document.getElementById('voucherTableBody');
+            tableBody.innerHTML = '';
+
+            vouchers.forEach(voucher => {
+                const row = `<tr>
+                    <td>${voucher.id}</td>
+                    <td>${voucher.code}</td>
+                    <td>${voucher.discountAmount}</td>
+                    <td>${voucher.expiryDate}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" onclick="openEditVoucherModal(${voucher.id})">Edit</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteVoucher(${voucher.id})">Delete</button>
+                    </td>
+                </tr>`;
+                tableBody.insertAdjacentHTML('beforeend', row);
+            });
+        }
+
+        function openAddVoucherModal() {
+            $('#voucherModal').modal('show');
+            document.getElementById('voucherForm').reset();
+            document.getElementById('voucherId').value = '';
+        }
+
+        function openEditVoucherModal(id) {
+            const voucher = vouchers.find(v => v.id === id);
+            if (!voucher) return;
+
+            document.getElementById('voucherId').value = voucher.id;
+            document.getElementById('voucherCode').value = voucher.code;
+            document.getElementById('discountAmount').value = voucher.discountAmount;
+            document.getElementById('expiryDate').value = voucher.expiryDate;
+
+            $('#voucherModal').modal('show');
+        }
+
+        function saveVoucher() {
+            const id = document.getElementById('voucherId').value;
+            const code = document.getElementById('voucherCode').value;
+            const discountAmount = document.getElementById('discountAmount').value;
+            const expiryDate = document.getElementById('expiryDate').value;
+
+            if (id) {
+                // Update existing voucher
+                const voucherIndex = vouchers.findIndex(v => v.id === Number(id));
+                vouchers[voucherIndex] = { id: Number(id), code, discountAmount: Number(discountAmount), expiryDate };
+            } else {
+                // Create new voucher
+                const newVoucher = {
+                    id: vouchers.length + 1,
+                    code,
+                    discountAmount: Number(discountAmount),
+                    expiryDate
+                };
+                vouchers.push(newVoucher);
+            }
+
+            $('#voucherModal').modal('hide');
+            displayVouchers();
+        }
+
+        function deleteVoucher(id) {
+            vouchers = vouchers.filter(v => v.id !== id);
+            displayVouchers();
+        }
+
+        // Load vouchers on page load
+        loadVouchers();
+    </script>
+</body>
+</html>

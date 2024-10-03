@@ -1,0 +1,258 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Send Message to Admin</title>
+    <style>
+      /* تنسيق البوكس لإرسال الرسائل */
+      .message-box {
+        width: 300px;
+        padding: 20px;
+        background-color: #f5f5f5;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+      }
+
+      .message-box h3 {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+
+      .message-box .form-group {
+        margin-bottom: 15px;
+      }
+
+      .message-box textarea {
+        width: 100%;
+        height: 100px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: none;
+      }
+
+      .message-box .send-btn {
+        width: 100%;
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .message-box .send-btn:hover {
+        background-color: #45a049;
+      }
+
+      /* تنسيق لعرض رسائل الإدمن */
+      .admin-messages {
+        margin: 20px auto;
+        width: 300px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .admin-messages h3 {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+
+      .admin-messages ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .admin-messages ul li {
+        padding: 10px;
+        background-color: #f1f1f1;
+        margin-bottom: 5px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- عرض رسائل الإدمن -->
+    <div class="admin-messages">
+      <h3>Admin Messages</h3>
+      <ul id="messageList">
+        <!-- الرسائل سيتم إضافتها هنا -->
+      </ul>
+    </div>
+    <!-- بوكس إرسال الرسالة -->
+    <div class="message-box">
+      <h3>Send a Message to Admin</h3>
+      <form id="messageForm">
+        <div class="form-group">
+          <textarea
+            id="messageContent"
+            placeholder="Type your message here..."
+            required
+          ></textarea>
+        </div>
+        <button type="submit" class="send-btn" onclick="sendMessage()">
+          Send
+        </button>
+      </form>
+    </div>
+
+    <!-- 
+    <script>
+        // إرسال الرسالة عبر API
+        document.getElementById('messageForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const messageContent = document.getElementById('messageContent').value;
+            
+            // بيانات الرسالة التي سيتم إرسالها إلى الـ API
+            const messageData = {
+                message: messageContent
+            };
+            
+            // استدعاء API لإرسال الرسالة
+            fetch('https://localhost:44367/api/AdminControllers/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(messageData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Message sent successfully');
+                document.getElementById('messageForm').reset(); // إعادة تعيين النموذج بعد الإرسال
+                loadAdminMessages(); // إعادة تحميل الرسائل بعد إرسال الرسالة
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to send the message');
+            });
+        });
+
+        // جلب الرسائل من API وعرضها
+        function loadAdminMessages() {
+            fetch('https://localhost:44367/api/AdminControllers/admin/messages')
+                .then(response => response.json())
+                .then(messages => {
+                    const messageList = document.getElementById('messageList');
+                    messageList.innerHTML = ''; // تفريغ القائمة أولاً
+                    
+                    messages.forEach(message => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = message;
+                        messageList.appendChild(listItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        // استدعاء الدالة عند تحميل الصفحة لعرض الرسائل
+        window.onload = loadAdminMessages;
+    </script> -->
+
+    <script>
+      // إرسال الرسالة من اليوزر أو الإدمن
+      async function sendMessage() {
+        debugger;
+        const message = document.getElementById("messageContent").value;
+        const sendUserMessage =
+          "https://localhost:44367/api/AdminControllers/send";
+
+        const messageData = {
+          sender: "User",
+          recipient: "Admin", // هنا يتم تحديد المستلم إذا كان الإدمن أو اليوزر
+          messageContent: message,
+        };
+
+        await fetch(sendUserMessage, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(messageData),
+        });
+
+        alert("تم إرسال الرسالة بنجاح!");
+        loadMessages(); // إعادة تحميل الرسائل بعد الإرسال
+      }
+
+      // دالة تحميل جميع الرسائل بين اليوزر والإدمن
+      async function loadMessages() {
+        try {
+          const response = await fetch(
+            "https://localhost:44367/api/AdminControllers/admin/messages",
+            {
+              method: "GET",
+            }
+          );
+          const data = await response.json();
+          const messagesContainer = document.getElementById("messageList");
+          messagesContainer.innerHTML = "";
+
+          data.forEach((message) => {
+            const messageElement = document.createElement("div");
+            messageElement.innerHTML = `<strong>${message.sender}:</strong> ${message.messageContent}`;
+
+            // إذا كان الإدمن هو الذي يرسل الرسالة، نضيف textarea لكتابة الرد
+            if (message.sender !== "Admin") {
+              messageElement.innerHTML += `
+                            <div>
+                                <textarea id="reply-${message.id}" placeholder="اكتب ردك هنا..."></textarea>
+                                <button onclick="sendReply(${message.id})">إرسال رد</button>
+                            </div>
+                        `;
+            }
+
+            messagesContainer.appendChild(messageElement);
+          });
+        } catch (error) {
+          console.error("Error fetching messages:", error);
+        }
+      }
+
+      // الرد على الرسائل من قبل الإدمن
+      // async function sendReply(messageId) {
+      //     const replyContent = document.getElementById(`reply-${messageId}`).value;
+
+      //     if (replyContent.trim() !== "") {
+      //         await fetch('https://localhost:44367/api/AdminControllers/admin/reply', {
+      //             method: 'POST',
+      //             headers: {
+      //                 'Content-Type': 'application/json'
+      //             },
+      //             body: JSON.stringify({
+      //                 messageId: messageId,
+      //                 sender: 'Admin',
+      //                 recipient: 'User', // الرد سيذهب إلى اليوزر
+      //                 messageContent: replyContent
+      //             })
+      //         })
+      //         .then(response => response.text())
+      //         .then(data => {
+      //             alert("تم إرسال الرد بنجاح!");
+      //             loadMessages(); // إعادة تحميل الرسائل بعد الإرسال
+      //         })
+      //         .catch(error => {
+      //             console.error('Error sending reply:', error);
+      //         });
+      //     } else {
+      //         alert("الرجاء إدخال الرد.");
+      //     }
+      // }
+
+      // تحميل الرسائل عند تحميل الصفحة
+      loadMessages();
+    </script>
+  </body>
+</html>

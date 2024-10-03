@@ -1,0 +1,23 @@
+2024-09-28 00:55:28.348 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44350/api/Category/GetAllCategory - null null
+2024-09-28 00:55:28.366 +03:00 [INF] CORS policy execution successful.
+2024-09-28 00:55:28.367 +03:00 [INF] Executing endpoint 'MasterPiece.Controllers.CategoryController.GetAllCategory (MasterPiece)'
+2024-09-28 00:55:28.367 +03:00 [INF] Route matched with {action = "GetAllCategory", controller = "Category"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllCategory() on controller MasterPiece.Controllers.CategoryController (MasterPiece).
+2024-09-28 00:55:28.396 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[category_id], [c].[description], [c].[image], [c].[name]
+FROM [Category] AS [c]
+2024-09-28 00:55:28.396 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[MasterPiece.Models.Category, MasterPiece, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-28 00:55:28.397 +03:00 [INF] Executed action MasterPiece.Controllers.CategoryController.GetAllCategory (MasterPiece) in 29.8841ms
+2024-09-28 00:55:28.397 +03:00 [INF] Executed endpoint 'MasterPiece.Controllers.CategoryController.GetAllCategory (MasterPiece)'
+2024-09-28 00:55:28.397 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44350/api/Category/GetAllCategory - 200 null application/json; charset=utf-8 49.1533ms
+2024-09-28 00:55:28.461 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44350/api/Products/GetProductByCategoryID5 - null null
+2024-09-28 00:55:28.461 +03:00 [INF] CORS policy execution successful.
+2024-09-28 00:55:28.462 +03:00 [INF] Executing endpoint 'MasterPiece.Controllers.ProductsController.GetProductByCategoryID (MasterPiece)'
+2024-09-28 00:55:28.462 +03:00 [INF] Route matched with {action = "GetProductByCategoryID", controller = "Products"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetProductByCategoryID(Int32) on controller MasterPiece.Controllers.ProductsController (MasterPiece).
+2024-09-28 00:55:28.466 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[product_id], [p].[brand], [p].[category_id], [p].[description], [p].[image], [p].[name], [p].[price], [p].[price_with_discount]
+FROM [Products] AS [p]
+WHERE [p].[category_id] = @__id_0
+2024-09-28 00:55:28.466 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[MasterPiece.Models.Product, MasterPiece, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-28 00:55:28.467 +03:00 [INF] Executed action MasterPiece.Controllers.ProductsController.GetProductByCategoryID (MasterPiece) in 4.9164ms
+2024-09-28 00:55:28.467 +03:00 [INF] Executed endpoint 'MasterPiece.Controllers.ProductsController.GetProductByCategoryID (MasterPiece)'
+2024-09-28 00:55:28.467 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44350/api/Products/GetProductByCategoryID5 - 200 null application/json; charset=utf-8 5.6055ms
